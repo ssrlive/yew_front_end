@@ -3,7 +3,7 @@ use yew::prelude::*;
 
 mod components;
 
-use components::atoms::main_title::MainTitle;
+use components::atoms::main_title::{Color, MainTitle};
 
 const STYLE_FILE: &str = include_str!("../main.css");
 
@@ -14,7 +14,7 @@ pub fn app() -> Html {
     html! {
 
         <div class={ stylesheet }>
-            <MainTitle title="Some others"/>
+            <MainTitle title="Some others" color={Color::Error}/>
             <p>{ "This is a paragraph" }</p>
         </div>
 
