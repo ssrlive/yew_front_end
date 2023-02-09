@@ -24,14 +24,15 @@ pub fn app() -> Html {
 
     html! {
         <>
-            <h1 class= { class } >{ format!("Hello, {}!", name) }</h1>
-            <p>{ "This is a paragraph" }</p>
 
-            <ul>
-                { for tasks.iter().map(|task| html! { <li>{ task }</li> }) }
-                // or
-                // { tasks.iter().map(|task| html! { <li>{ task }</li> }).collect::<Html>() }
-            </ul>
+        <h1 class= { class } >{ format!("Hello, {}!", name) }</h1>
+        <p>{ "This is a paragraph" }</p>
+
+        <ul>
+            { for tasks.iter().map(|task| html! { <li>{ task }</li> }) }
+            // or
+            // { tasks.iter().map(|task| html! { <li>{ task }</li> }).collect::<Html>() }
+        </ul>
 
         </>
     }
