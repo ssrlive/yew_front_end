@@ -1,39 +1,32 @@
 use gloo::console::log;
 use serde::{Deserialize, Serialize};
 use yew::prelude::*;
+use stylist::{yew::styled_component, style};
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct MyOjbect {
     name: String,
 }
 
-#[function_component(App)]
+#[styled_component(App)]
 pub fn app() -> Html {
-    let name = "World";
+    let stylesheet = style!(
+        r#"
+            h1 {
+                color: red;
+            }
 
-    let obj = MyOjbect {
-        name: name.to_string(),
-    };
-
-    log!(format!("Hello, {name}!"));
-    log!(serde_json::to_string_pretty(&obj).unwrap());
-
-    let class = "my_title";
-
-    let tasks = vec!["task1", "task2", "task3"];
-
+            p {
+                color: blue;
+            }
+        "#
+    ).unwrap();
     html! {
-        <>
 
-        <h1 class= { class } >{ format!("Hello, {}!", name) }</h1>
-        <p>{ "This is a paragraph" }</p>
+        <div class={ stylesheet }>
+            <h1>{ "Hello World!" }</h1>
+            <p>{ "This is a paragraph" }</p>
+        </div>
 
-        <ul>
-            { for tasks.iter().map(|task| html! { <li>{ task }</li> }) }
-            // or
-            // { tasks.iter().map(|task| html! { <li>{ task }</li> }).collect::<Html>() }
-        </ul>
-
-        </>
     }
 }
