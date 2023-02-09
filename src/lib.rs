@@ -15,17 +15,13 @@ pub fn app() -> Html {
             h1 {
                 color: red;
             }
-
-            p {
-                color: blue;
-            }
         "#
     ).unwrap();
     html! {
 
         <div class={ stylesheet }>
             <h1>{ "Hello World!" }</h1>
-            <p>{ "This is a paragraph" }</p>
+            <p class={ css!("color: green; font-size: 75px;") }>{ "This is a paragraph" }</p>
         </div>
 
     }
