@@ -1,22 +1,12 @@
-use gloo::console::log;
-use serde::{Deserialize, Serialize};
 use yew::prelude::*;
-use stylist::{yew::styled_component, style};
+use stylist::{yew::styled_component, style, Style};
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-struct MyOjbect {
-    name: String,
-}
+const STYLE_FILE: &str = include_str!("../main.css");
 
 #[styled_component(App)]
 pub fn app() -> Html {
-    let stylesheet = style!(
-        r#"
-            h1 {
-                color: red;
-            }
-        "#
-    ).unwrap();
+    let stylesheet = Style::new(STYLE_FILE).unwrap();
+
     html! {
 
         <div class={ stylesheet }>
