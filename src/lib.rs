@@ -14,7 +14,7 @@ pub fn app() -> Html {
     html! {
 
         <div class={ stylesheet }>
-            <MainTitle />
+            <MainTitle title="Some others"/>
             <p>{ "This is a paragraph" }</p>
         </div>
 
