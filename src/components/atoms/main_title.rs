@@ -5,6 +5,7 @@ use yew::prelude::*;
 pub struct Props {
     pub title: Option<String>,
     pub color: Option<Color>,
+    pub on_load: Option<Callback<String>>,
 }
 
 #[allow(dead_code)]
@@ -57,6 +58,10 @@ pub fn main_title(props: &Props) -> Html {
     "#
     )
     .unwrap();
+
+    if let Some(on_load) = &props.on_load {
+        on_load.emit(title.to_string());
+    }
 
     html! {
         <div class={ style }>
