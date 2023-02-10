@@ -1,7 +1,5 @@
 use gloo::console::log;
 use stylist::{yew::styled_component, Style};
-use wasm_bindgen::JsCast;
-use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
 mod components;
@@ -21,12 +19,7 @@ pub fn app() -> Html {
         log!(format!("MainTitle loaded: {msg}"));
     });
 
-    let input_change = Callback::from(|event: Event| {
-        let value = event
-            .target()
-            .unwrap()
-            .unchecked_into::<HtmlInputElement>()
-            .value();
+    let input_change = Callback::from(|value: String| {
         log!(value);
     });
 

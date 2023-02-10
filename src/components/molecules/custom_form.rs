@@ -3,7 +3,7 @@ use yew::prelude::*;
 
 #[derive(PartialEq, Properties)]
 pub struct Props {
-    pub on_change: Option<Callback<Event>>,
+    pub on_change: Option<Callback<String>>,
 }
 
 #[function_component(CustomForm)]
