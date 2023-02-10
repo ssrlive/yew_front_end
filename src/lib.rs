@@ -4,7 +4,10 @@ use yew::prelude::*;
 
 mod components;
 
-use components::atoms::main_title::{Color, MainTitle};
+use crate::components::{
+    atoms::main_title::{Color, MainTitle},
+    molecules::custom_form::CustomForm,
+};
 
 const STYLE_FILE: &str = include_str!("../main.css");
 
@@ -21,6 +24,7 @@ pub fn app() -> Html {
         <div class={ stylesheet }>
             <MainTitle title="Some others" color={Color::Error} on_load={ main_tilte_load }/>
             <p>{ "This is a paragraph" }</p>
+            <CustomForm />
         </div>
 
     }
