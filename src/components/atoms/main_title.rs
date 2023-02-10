@@ -9,17 +9,12 @@ pub struct Props {
 }
 
 #[allow(dead_code)]
-#[derive(PartialEq)]
+#[derive(Default, PartialEq)]
 pub enum Color {
+    #[default]
     Normal,
     Ok,
     Error,
-}
-
-impl Default for Color {
-    fn default() -> Self {
-        Color::Normal
-    }
 }
 
 impl std::fmt::Display for Color {
