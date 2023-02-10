@@ -1,5 +1,7 @@
 use gloo::console::log;
 use stylist::{yew::styled_component, Style};
+use wasm_bindgen::JsCast;
+use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
 mod components;
@@ -19,12 +21,21 @@ pub fn app() -> Html {
         log!(format!("MainTitle loaded: {msg}"));
     });
 
+    let input_change = Callback::from(|event: Event| {
+        let value = event
+            .target()
+            .unwrap()
+            .unchecked_into::<HtmlInputElement>()
+            .value();
+        log!(value);
+    });
+
     html! {
 
         <div class={ stylesheet }>
             <MainTitle title="Some others" color={Color::Error} on_load={ main_tilte_load }/>
             <p>{ "This is a paragraph" }</p>
-            <CustomForm />
+            <CustomForm on_change={ input_change }/>
         </div>
 
     }
