@@ -1,4 +1,5 @@
 use crate::components::atoms::{custom_button::CustomButton, text_input::TextInput};
+use gloo::console::log;
 use yew::prelude::*;
 
 #[derive(PartialEq, Properties)]
@@ -18,11 +19,19 @@ pub fn custom_form(props: &Props) -> Html {
         }
     });
 
+    let button_click_count = use_state(|| 0);
+    let state = button_click_count.clone();
+    let button_on_click = Callback::from(move |_| {
+        let count = *state;
+        state.set( count + 1);
+    });
+
     html! {
-        <form>
+        <div>
             <TextInput name="username" on_change={ on_change }/>
-            <CustomButton label="Submit"/>
+            <CustomButton label="Submit" onclick={ button_on_click }/>
             <p>{ "Username: " }{ &*username_state }</p>
-        </form>
+            <p>{ "Button clicked: " }{ *button_click_count }{ " times" }</p>
+        </div>
     }
 }
