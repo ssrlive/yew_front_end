@@ -23,6 +23,6 @@ pub fn text_input(props: &Props) -> Html {
     });
 
     html! {
-        <input type="text" name={ props.name.clone()} onchange={ on_change_internal }/>
+        <input type="text" name={ props.name.clone()} onchange={ on_change_internal } placeholder={props.name.clone()}/>
     }
 }
