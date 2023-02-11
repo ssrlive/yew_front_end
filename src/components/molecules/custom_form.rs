@@ -1,4 +1,7 @@
-use crate::components::atoms::{custom_button::CustomButton, text_input::TextInput};
+use crate::{
+    components::atoms::{custom_button::CustomButton, text_input::TextInput},
+    User,
+};
 use std::ops::Deref;
 use yew::prelude::*;
 
@@ -16,6 +19,8 @@ pub struct Data {
 #[function_component(CustomForm)]
 pub fn custom_form(props: &Props) -> Html {
     let state = use_state(Data::default);
+
+    let context = use_context::<User>();
 
     let cloned_state = state.clone();
     let on_change = Callback::from(move |value: String| {
@@ -47,6 +52,7 @@ pub fn custom_form(props: &Props) -> Html {
             <TextInput name="username" on_change={ on_change }/>
             <TextInput name="favorite_language" on_change={ language_changed }/>
             <CustomButton label="Submit"/>
+            <p>{ format!("Context: {:#?}", context.unwrap_or_default()) }</p>
         </form>
     }
 }
