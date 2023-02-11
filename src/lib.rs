@@ -37,6 +37,19 @@ pub fn app() -> Html {
         });
     });
 
+    let first_load = use_state(|| {
+        log!("App loaded");
+        true
+    });
+    use_effect(move || {
+        if *first_load.deref() {
+            first_load.set(false);
+        } else {
+            log!("App updated");
+        }
+        || log!("App unmounted")
+    });
+
     html! {
         <div class={ stylesheet }>
         <ContextProvider<User> context={ user_state.deref().clone() }>
