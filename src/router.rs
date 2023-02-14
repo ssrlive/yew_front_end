@@ -14,6 +14,7 @@ pub enum MyRoute {
     NotFound,
 }
 
+#[allow(dead_code)]
 pub fn my_switch(routes: MyRoute) -> Html {
     match routes {
         MyRoute::Home => html! { <Home /> },

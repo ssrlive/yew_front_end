@@ -42,7 +42,7 @@ pub fn main_title(props: &Props) -> Html {
     let style = style!(
         r#"
         .normal {
-            color: white;
+            color: black;
         }
         .ok {
             color: green;
