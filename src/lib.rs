@@ -1,14 +1,18 @@
-use std::ops::Deref;
-
 use gloo::console::log;
+use std::ops::Deref;
 use stylist::{yew::styled_component, Style};
 use yew::prelude::*;
+use yew_router::prelude::*;
 
 mod components;
+mod router;
 
-use crate::components::{
-    atoms::main_title::{Color, MainTitle},
-    molecules::custom_form::{CustomForm, Data},
+use crate::{
+    components::{
+        atoms::main_title::{Color, MainTitle},
+        molecules::custom_form::{CustomForm, Data},
+    },
+    router::{my_switch, MyRoute},
 };
 
 const STYLE_FILE: &str = include_str!("../main.css");
@@ -56,6 +60,9 @@ pub fn app() -> Html {
             <MainTitle title="Some others" color={Color::Error} on_load={ main_tilte_load }/>
             <p>{ "This is a paragraph" }</p>
             <CustomForm onsubmit={ custom_form_onsubmit }/>
+            <BrowserRouter>
+                <Switch<MyRoute> render={ my_switch } />
+            </BrowserRouter>
         </ContextProvider<User>>
         </div>
     }
