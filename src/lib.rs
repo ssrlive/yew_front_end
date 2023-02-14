@@ -58,7 +58,7 @@ pub fn app() -> Html {
     });
 
     html! {
-        <div class={ stylesheet }>
+        <div>
         <ContextProvider<User> context={ user_state.deref().clone() }>
             <MainTitle title="Some others" color={Color::Error} on_load={ main_tilte_load }/>
             <p>{ "This is a paragraph" }</p>
