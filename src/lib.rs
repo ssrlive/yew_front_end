@@ -16,7 +16,7 @@ pub struct User {
 pub fn app() -> Html {
     html! {
         <div>
-            <StructHello />
+            <StructHello message={ "Hello from lib.rs".to_string() } />
         </div>
     }
 }

@@ -1,9 +1,13 @@
 use crate::components::atoms::main_title::MainTitle;
 use stylist::{style, Style};
-use yew::{html, Component, Context, Html};
+use yew::{html, Component, Context, Html, Properties};
+
+#[derive(Clone, Debug, PartialEq, Properties)]
+pub struct Props {
+    pub message: String,
+}
 
 pub struct StructHello {
-    pub message: String,
     pub stylesheet: Style,
 }
 
@@ -20,20 +24,19 @@ impl StructHello {
 
 impl Component for StructHello {
     type Message = ();
-    type Properties = ();
+    type Properties = Props;
 
     fn create(_props: &Context<Self>) -> Self {
         Self {
-            message: "Hello, world from a struct".to_string(),
             stylesheet: Self::style(),
         }
     }
 
-    fn view(&self, _ctx: &Context<Self>) -> Html {
+    fn view(&self, context: &Context<Self>) -> Html {
         html! {
             <div>
-                <h1 class={ self.stylesheet.clone() }>{ &self.message }</h1>
-                <MainTitle title = { self.message.clone() } />
+                <h1 class={ self.stylesheet.clone() }>{ &context.props().message }</h1>
+                <MainTitle title = { context.props().message.clone() } />
             </div>
         }
     }
