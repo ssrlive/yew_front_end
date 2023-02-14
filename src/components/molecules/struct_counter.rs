@@ -1,7 +1,7 @@
 use yew::{html, Component, Context, Html};
 
 pub enum StructCounterMsg {
-    ButtonClicked,
+    ButtonClicked(i32),
 }
 
 pub struct StructCounter {
@@ -19,7 +19,7 @@ impl Component for StructCounter {
     fn view(&self, context: &Context<Self>) -> Html {
         html! {
             <div>
-                <button onclick = { context.link().callback(|_| StructCounterMsg::ButtonClicked) } >{ "Increment" }</button>
+                <button onclick = { context.link().callback(|_| StructCounterMsg::ButtonClicked(2)) } >{ "Increment" }</button>
                 <p>{ "I have been clicked " }{ self.count }{" times"}</p>
             </div>
         }
@@ -27,8 +27,8 @@ impl Component for StructCounter {
 
     fn update(&mut self, _context: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
-            StructCounterMsg::ButtonClicked => {
-                self.count += 1;
+            StructCounterMsg::ButtonClicked(amount) => {
+                self.count += amount;
                 true
             }
         }
