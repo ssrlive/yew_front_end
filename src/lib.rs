@@ -9,7 +9,10 @@ mod router;
 
 use crate::{
     components::{
-        atoms::main_title::{Color, MainTitle},
+        atoms::{
+            main_title::{Color, MainTitle},
+            struct_hello::StructHello,
+        },
         molecules::custom_form::{CustomForm, Data},
     },
     router::{my_switch, MyRoute},
@@ -29,7 +32,7 @@ pub fn app() -> Html {
 
     let user_state = use_state(User::default);
 
-    let main_tilte_load = Callback::from(|msg| {
+    let main_tilte_load = Callback::from(|msg: String| {
         log!(format!("MainTitle loaded: {msg}"));
     });
 
@@ -63,7 +66,11 @@ pub fn app() -> Html {
             <BrowserRouter>
                 <Switch<MyRoute> render={ my_switch } />
             </BrowserRouter>
+            <StructHello />
         </ContextProvider<User>>
         </div>
+        // <div>
+        //     <StructHello />
+        // </div>
     }
 }
