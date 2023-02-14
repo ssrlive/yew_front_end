@@ -4,7 +4,9 @@ use yew::prelude::*;
 mod components;
 mod router;
 
-use crate::components::atoms::struct_hello::StructHello;
+use crate::components::{
+    atoms::struct_hello::StructHello, molecules::struct_counter::StructCounter,
+};
 
 #[derive(Clone, Debug, PartialEq, Default)]
 pub struct User {
@@ -17,6 +19,7 @@ pub fn app() -> Html {
     html! {
         <div>
             <StructHello message={ "Hello from lib.rs".to_string() } />
+            <StructCounter />
         </div>
     }
 }
