@@ -25,11 +25,8 @@ impl Component for IncrementCount {
         match msg {
             Msg::Store(_) => false,
             Msg::ButtonClicked => {
-                self.dispatch.reduce(|store| {
-                    CounterStore {
-                        count: store.count + 1,
-                    }
-                    .into()
+                self.dispatch.reduce_mut(|state| {
+                    state.count += 1;
                 });
                 false
             }
